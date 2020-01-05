@@ -1,5 +1,5 @@
 # bluejay.docker
 
-`bash
+```bash
 docker build -t bluejay .
-`
+```

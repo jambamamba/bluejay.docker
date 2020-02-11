@@ -4,14 +4,13 @@ set -xe
 
 apt-get update
 apt-get install -y sudo
+groupadd --gid 1000 dev
+useradd --system --create-home --home-dir /home/dev --shell /bin/bash --gid root --groups sudo,dev --uid 1000 dev
+passwd -d dev
 export uid=1000 gid=1000
-mkdir -p /home/developer
-echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd
-echo "developer:x:${uid}:" >> /etc/group
-echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer
-chmod 0440 /etc/sudoers.d/developer
-chown ${uid}:${gid} -R /home/developer
+mkdir -p /home/dev
 DEBIAN_FRONTEND=noninteractive apt-get install -y\
+ sudo\
  apt-utils\
  libpng-dev\
  libjpeg-dev\
@@ -88,12 +87,12 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y\
  php-mysql\
  libpulse-mainloop-glib0\
  python3-pip
-mkdir /home/developer/Downloads
-cd /home/developer/Downloads
+mkdir /home/dev/Downloads
+cd /home/dev/Downloads
 wget "https://cmake.org/files/v3.12/cmake-3.12.2-Linux-x86_64.tar.gz"
 tar -xzvf cmake-3.12.2-Linux-x86_64.tar.gz
-export PATH=$PATH:/home/developer/Downloads/cmake-3.12.2-Linux-x86_64/bin
-chown -R developer:developer /home/developer
+export PATH=$PATH:/home/dev/Downloads/cmake-3.12.2-Linux-x86_64/bin
+chown -R dev:dev /home/dev
 export "PS1=$(whoami)@$(hostname):$(pwd) >
-cd /home/developer/\
+cd /home/dev/\
 "

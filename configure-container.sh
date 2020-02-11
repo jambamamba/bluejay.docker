@@ -15,9 +15,9 @@ function main()
 function installSshKeys()
 {
     echo "installSshKeys"
-	if [ ! -d "/home/developer/$DOCKERUSER/.ssh" ]; then echo "/home/developer/$DOCKERUSER/.ssh does not exist"; else
+	if [ ! -d "/home/dev/$DOCKERUSER/.ssh" ]; then echo "/home/dev/$DOCKERUSER/.ssh does not exist"; else
 		echo "setting link to .ssh"
-		ln -s /home/developer/$DOCKERUSER/.ssh /home/developer/.ssh;
+		ln -s /home/dev/$DOCKERUSER/.ssh /home/dev/.ssh;
 	fi
 }
 
@@ -38,10 +38,10 @@ function configureGit()
 function configureDownloads()
 {
     echo "configureDownloads"
-	mkdir -p /home/developer/$DOCKERUSER/Downloads/
-    sudo cp -nr /home/developer/Downloads/* /home/developer/$DOCKERUSER/Downloads/
-    rm -fr /home/developer/Downloads
-    ln -s /home/developer/$DOCKERUSER/Downloads /home/developer/Downloads
+	mkdir -p /home/dev/$DOCKERUSER/Downloads/
+    sudo cp -nr /home/dev/Downloads/* /home/dev/$DOCKERUSER/Downloads/
+    rm -fr /home/dev/Downloads
+    ln -s /home/dev/$DOCKERUSER/Downloads /home/dev/Downloads
 }
 
 main

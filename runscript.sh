@@ -86,7 +86,8 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y\
  php\
  php-mysql\
  libpulse-mainloop-glib0\
- python3-pip
+ python3-pip\
+ libnvidia-gl-418
 mkdir /home/dev/Downloads
 cd /home/dev/Downloads
 wget "https://cmake.org/files/v3.12/cmake-3.12.2-Linux-x86_64.tar.gz"

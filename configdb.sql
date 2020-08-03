@@ -1,0 +1,5 @@
+CREATE USER 'dev'@'localhost' IDENTIFIED BY 'a';
+	GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' IDENTIFIED BY 'a';
+	FLUSH PRIVILEGES;
+	CREATE DATABASE oosman;
+	

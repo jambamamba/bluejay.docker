@@ -74,6 +74,12 @@ function configureSelfSignedCertificate()
 
 function configureMysql()
 {
+	if [ -d "/home/dev/$DOCKERUSER/mysqldb" ]; then
+		sudo cp -r /home/dev/$DOCKERUSER/mysqldb /var/lib/mysql/oosman
+		sudo /etc/init.d/mysql start
+		return
+	fi
+	
 	sudo /etc/init.d/mysql start
 	echo "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'a';
 	GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' IDENTIFIED BY 'a';
@@ -100,7 +106,7 @@ function configureOpenGl()
 {
 	pushd /
 	sudo cp /tmp/libGL.so* /usr/lib/x86_64-linux-gnu/
-	rm -fr /tmp/libGL.so*
+	sudo rm -fr /tmp/libGL.so*
 	popd
 }
 
@@ -118,6 +124,8 @@ function installGoogleChromeBrowser()
 function configureQtCreator()
 {
 	sudo ln -s /home/dev/$DOCKERUSER/work.git/bluejay.docker/qtcreator.sh /usr/local/bin/qtcreator
+	sudo rm -fr /home/dev/.config
+	sudo ln -s /home/dev/$DOCKERUSER/.config /home/dev/.config
 }
 
 main

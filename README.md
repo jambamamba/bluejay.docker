@@ -9,4 +9,11 @@ Based off [https://gitlab.com/nvidia/container-images/cuda/blob/master/dist/ubun
 ```bash
 docker build -t bluejay .
 ```
+If you get permission error
 
+```bash
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+```
+
+Then logout, and login again.
